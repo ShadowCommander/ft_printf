@@ -20,7 +20,7 @@
 #  define LONG_MAX	0x7fffffffffffffffL
 # endif
 # ifndef LONG_MIN
-#  define LONG_MIN	(-0x7fffffffffffffffL-1)
+#  define LONG_MIN	-0x8000000000000000L
 # endif
 
 typedef struct s_strtol	t_strtol;

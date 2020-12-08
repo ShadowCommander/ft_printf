@@ -10,26 +10,36 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME := libft.a
-FILES := ft_atoi ft_bzero ft_isalnum ft_isalpha ft_isdigit ft_islower ft_isspace ft_isupper ft_memalloc ft_putchar_fd ft_putnbr_fd ft_strlen ft_strnew ft_strtol ft_toupper ft_ulltoa_base
-HEADERS := .
+NAME := libftprintf.a
+LIBDIR := libft/
+LIB := ft
+LIBNAME := $(addprefix lib,$(addsuffix .a,$(LIB)))
+LIBFULL := $(addprefix $(LIBDIR),$(LIBNAME))
+FILES := ft_printf
+HEADERDIRS := . libft
 OBJ := $(addsuffix .o,$(FILES))
 CC := clang
-CFLAGS := ${CFLAGS} -Werror -Wall -Wextra
+OFLAGS := ${CLFAGS} -Werror -Wall -Wextra $(addprefix -I,$(HEADERDIRS))
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+$(NAME): $(OBJ) $(LIBFULL)
+	cp $(LIBFULL) $(NAME)
+	ar rc $@ $(OBJ)
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c -I $(HEADERS) $<
+	$(CC) $(OFLAGS) -c $<
+
+$(LIBFULL): $(LIBDIR)
+	$(MAKE) -C ./libft
 
 clean:
-	/bin/rm -f $(OBJ)
+	$(MAKE) fclean -C libft
+	/bin/rm -f $(OBJ) *.o
 
 fclean: clean
 	/bin/rm -f $(NAME) libft.h.gch
 
 re: fclean all
+
+.PHONY: $(LIBDIR)

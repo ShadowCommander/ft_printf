@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include <stdarg.h>
-# include "libft/libft.h"
+# include "libft.h"
 
 typedef struct	s_input
 {
@@ -28,11 +28,11 @@ typedef struct	s_input
 
 typedef struct	s_flags
 {
-	int		alternate; // bool
-	int		zero_pad; // bool
-	int		left_adjust; // bool
-	int		sign_space; // bool
-	int		sign_always; // bool
+	int		alternate;
+	int		zero_pad;
+	int		left_adjust;
+	int		sign_space;
+	int		sign_always;
 	int		field_width;
 	int		precision;
 	int		length_modifier;
