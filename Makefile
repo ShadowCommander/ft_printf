@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jtong <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: pi <pi@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/12 09:44:30 by jtong             #+#    #+#              #
-#    Updated: 2020/12/01 13:04:36 by jtong            ###   ########.fr        #
+#    Updated: 2020/12/09 10:41:41 by pi               ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ FILES := ft_printf
 HEADERDIRS := . libft
 OBJ := $(addsuffix .o,$(FILES))
 CC := clang
-OFLAGS := ${CLFAGS} -Werror -Wall -Wextra $(addprefix -I,$(HEADERDIRS))
+OFLAGS := ${CFLAGS} -Werror -Wall -Wextra $(addprefix -I,$(HEADERDIRS))
 
 all: $(NAME)
 
