@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtol.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtong <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: pi <pi@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/01 14:12:37 by jtong             #+#    #+#             */
-/*   Updated: 2019/05/03 17:10:35 by jtong            ###   ########.fr       */
+/*   Updated: 2020/12/10 21:27:34 by pi               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
+#include <limits.h>
 
 static int		ft_ctoi(int c)
 {

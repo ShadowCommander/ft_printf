@@ -6,13 +6,13 @@
 #    By: pi <pi@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/12 09:44:30 by jtong             #+#    #+#              #
-#    Updated: 2020/12/09 10:07:25 by pi               ###   ########.fr        #
+#    Updated: 2020/12/13 18:33:39 by pi               ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := libft.a
 FILES := ft_atoi ft_bzero ft_isalnum ft_isalpha ft_isdigit ft_islower ft_isspace ft_isupper ft_memalloc ft_putchar_fd ft_putnbr_fd ft_strlen ft_strnew ft_strtol ft_toupper ft_ulltoa_base \
-	ft_itoa ft_strdup ft_strsub ft_strndup ft_strncpy
+	ft_strdup ft_strsub ft_strndup ft_strncpy
 HEADERS := .
 OBJ := $(addsuffix .o,$(FILES))
 CC := clang

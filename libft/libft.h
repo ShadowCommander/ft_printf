@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtong <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: pi <pi@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/27 16:28:56 by jtong             #+#    #+#             */
-/*   Updated: 2020/12/01 13:05:57 by jtong            ###   ########.fr       */
+/*   Updated: 2020/12/10 21:28:48 by pi               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,6 @@
 
 # include <string.h>
 # include <sys/types.h>
-
-# ifndef LONG_MAX
-#  define LONG_MAX	0x7fffffffffffffffL
-# endif
-# ifndef LONG_MIN
-#  define LONG_MIN	-0x8000000000000000L
-# endif
 
 typedef struct s_strtol	t_strtol;
 struct	s_strtol
