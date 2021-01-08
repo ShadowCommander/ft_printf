@@ -15,9 +15,11 @@ LIBDIR := libft/
 LIB := ft
 LIBNAME := $(addprefix lib,$(addsuffix .a,$(LIB)))
 LIBFULL := $(addprefix $(LIBDIR),$(LIBNAME))
-FILES := ft_printf
+FILENAMES := ft_printf ft_va_char ft_va_hex ft_va_integer ft_va_percent ft_va_string ft_va_ull pf_print pf_utils ft_va_pointer
+FILESDIR := srcs
+FILES := $(addprefix $(FILESDIR)/,$(FILENAMES))
 HEADERDIRS := . libft
-OBJ := $(addsuffix .o,$(FILES))
+OBJ := $(addsuffix .o,$(FILENAMES))
 CC := clang
 OFLAGS := ${CFLAGS} -Werror -Wall -Wextra $(addprefix -I,$(HEADERDIRS))
 
@@ -28,7 +30,7 @@ $(NAME): $(OBJ) $(LIBFULL)
 	ar rc $@ $(OBJ)
 	ranlib $(NAME)
 
-%.o : %.c
+%.o : $(FILESDIR)/%.c
 	$(CC) $(OFLAGS) -c $<
 
 $(LIBFULL): $(LIBDIR)

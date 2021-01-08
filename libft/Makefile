@@ -11,8 +11,10 @@
 # **************************************************************************** #
 
 NAME := libft.a
-FILES := ft_atoi ft_bzero ft_isalnum ft_isalpha ft_isdigit ft_islower ft_isspace ft_isupper ft_memalloc ft_putchar_fd ft_putnbr_fd ft_strlen ft_strnew ft_strtol ft_toupper ft_ulltoa_base \
-	ft_strdup ft_strsub ft_strndup ft_strncpy
+FILES := ft_bzero ft_isalnum ft_isalpha ft_isdigit ft_islower \
+	ft_isspace ft_isupper ft_memalloc ft_putchar_fd ft_putnbr_fd ft_strlen \
+	ft_strnew ft_strtol ft_toupper ft_ulltoa_base ft_strdup ft_strsub \
+	ft_strndup ft_strncpy ft_itoa
 HEADERS := .
 OBJ := $(addsuffix .o,$(FILES))
 CC := clang
