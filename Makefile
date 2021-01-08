@@ -14,14 +14,13 @@ NAME := libftprintf.a
 LIBDIR := libft/
 LIB := ft
 LIBNAME := $(addprefix lib,$(addsuffix .a,$(LIB)))
-LIBFULL := $(addprefix $(LIBDIR),$(LIBNAME))
+LIBFULL := $(addprefix $(LIBDIR)/,$(LIBNAME))
 FILENAMES := ft_printf ft_va_char ft_va_hex ft_va_integer ft_va_percent ft_va_string ft_va_ull pf_print pf_utils ft_va_pointer
-FILESDIR := srcs
-FILES := $(addprefix $(FILESDIR)/,$(FILENAMES))
-HEADERDIRS := . libft
+FILEDIR := srcs
+HEADERDIR := . $(LIBDIR)
 OBJ := $(addsuffix .o,$(FILENAMES))
 CC := clang
-OFLAGS := ${CFLAGS} -Werror -Wall -Wextra $(addprefix -I,$(HEADERDIRS))
+OFLAGS := ${CFLAGS} -Werror -Wall -Wextra $(addprefix -I,$(HEADERDIR))
 
 all: $(NAME)
 
@@ -30,18 +29,18 @@ $(NAME): $(OBJ) $(LIBFULL)
 	ar rc $@ $(OBJ)
 	ranlib $(NAME)
 
-%.o : $(FILESDIR)/%.c
+%.o : $(FILEDIR)/%.c
 	$(CC) $(OFLAGS) -c $<
 
 $(LIBFULL): $(LIBDIR)
-	$(MAKE) -C ./libft
+	$(MAKE) -C $(LIBDIR)
 
 clean:
-	$(MAKE) fclean -C libft
+	$(MAKE) fclean -C $(LIBDIR)
 	/bin/rm -f $(OBJ) *.o
 
 fclean: clean
-	/bin/rm -f $(NAME) libft.h.gch
+	/bin/rm -f $(NAME) *.h.gch
 
 re: fclean all
 

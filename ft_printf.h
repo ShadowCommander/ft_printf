@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pi <pi@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: jtong <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 00:55:03 by jtong             #+#    #+#             */
-/*   Updated: 2020/12/13 19:01:39 by pi               ###   ########.fr       */
+/*   Updated: 2021/01/08 10:56:38 by jtong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include "libft.h"
-
-/* static char	*specifiers = "cspdiuxX%-0.*123456789"; */
 
 typedef struct	s_input
 {

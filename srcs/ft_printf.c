@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtong <pi@student.42.fr>                   +#+  +:+       +#+        */
+/*   By: jtong <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 00:54:15 by jtong             #+#    #+#             */
-/*   Updated: 2020/12/26 23:15:08 by pi               ###   ########.fr       */
+/*   Updated: 2021/01/08 10:43:27 by jtong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		get_id(char c)
 int		parse_format(t_input *input)
 {
 	t_flags		flags;
-	static int	(*table[256])(t_input *, t_flags *)	 = {
+	static int	(*table[256])(t_input *, t_flags *) = {
 		ft_va_char, ft_va_string, ft_va_pointer, ft_va_integer, ft_va_integer,
 		ft_va_ull, ft_va_hex, ft_va_hex, ft_va_percent, pf_left_adjust,
 		pf_field_width, pf_precision, pf_field_width, pf_field_width,
