@@ -6,7 +6,7 @@
 #    By: pi <pi@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/12 09:44:30 by jtong             #+#    #+#              #
-#    Updated: 2020/12/13 00:34:18 by pi               ###   ########.fr        #
+#    Updated: 2021/01/16 01:01:34 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,17 +19,30 @@ FILENAMES := ft_printf ft_va_char ft_va_hex ft_va_integer ft_va_percent ft_va_st
 FILEDIR := srcs
 HEADERDIR := . $(LIBDIR)
 OBJ := $(addsuffix .o,$(FILENAMES))
+
+BONUSFILENAMES := ft_printf_bonus ft_va_char_bonus ft_va_hex_bonus ft_va_integer_bonus ft_va_percent_bonus ft_va_string_bonus ft_va_ull_bonus pf_print_bonus pf_utils_bonus ft_va_pointer_bonus pf_utils_extra_bonus
+BONUSFILEDIR := bonus
+BONUSHEADERDIR := bonus $(LIBDIR)
+BONUSOBJ := $(addsuffix .o,$(BONUSFILENAMES))
+
 CC := clang
 OFLAGS := ${CFLAGS} -Werror -Wall -Wextra $(addprefix -I,$(HEADERDIR))
 
+vpath %.c $(FILEDIR) $(BONUSFILEDIR)
+
 all: $(NAME)
+
+bonus: $(BONUSOBJ) $(LIBFULL)
+	cp $(LIBFULL) $(NAME)
+	ar rc $@ $(BONUSOBJ)
+	ranlib $(NAME)
 
 $(NAME): $(OBJ) $(LIBFULL)
 	cp $(LIBFULL) $(NAME)
 	ar rc $@ $(OBJ)
 	ranlib $(NAME)
 
-%.o : $(FILEDIR)/%.c
+%.o : %.c
 	$(CC) $(OFLAGS) -c $<
 
 $(LIBFULL): $(LIBDIR)

@@ -6,7 +6,7 @@
 /*   By: jtong <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 00:55:03 by jtong             #+#    #+#             */
-/*   Updated: 2021/01/08 10:56:38 by jtong            ###   ########.fr       */
+/*   Updated: 2021/01/08 14:49:44 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int				pf_zero_pad(t_input *input, t_flags *flags);
 int				pf_field_width(t_input *input, t_flags *flags);
 int				pf_precision(t_input *input, t_flags *flags);
 int				pf_null(t_input *input, t_flags *flags);
+int				pf_space(t_input *input, t_flags *flags);
 int				verify(t_input *input, t_flags *flags);
 void			get_size(t_input *input, t_flags *flags);
 void			pad(t_input *input, int len, char c);
