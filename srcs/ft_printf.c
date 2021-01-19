@@ -6,7 +6,7 @@
 /*   By: jtong <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 00:54:15 by jtong             #+#    #+#             */
-/*   Updated: 2021/01/16 01:03:35 by user42           ###   ########.fr       */
+/*   Updated: 2021/01/19 10:14:04 by jtong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,24 @@ int		get_id(char c)
 	return (i);
 }
 
-int		parse_format(t_input *input)
+int		(*get_table(int c))(t_input *, t_flags *)
 {
-	t_flags		flags;
-	static int	(*table[256])(t_input *, t_flags *) = {
-		ft_va_char, ft_va_string, ft_va_pointer, ft_va_integer, ft_va_integer,
+	static int	(*table[256])(t_input *, t_flags *) = { ft_va_char,
+		ft_va_string, ft_va_pointer, ft_va_integer, ft_va_integer,
 		ft_va_ull, ft_va_hex, ft_va_hex, ft_va_percent, pf_left_adjust,
 		pf_field_width, pf_precision, pf_field_width, pf_field_width,
 		pf_field_width, pf_field_width, pf_field_width, pf_field_width,
 		pf_field_width, pf_field_width, pf_field_width, pf_field_width
 	};
+
+	if (c < 0 || c > 256)
+		return (0);
+	return (*table[c]);
+}
+
+void	parse_format(t_input *input)
+{
+	t_flags		flags;
 	int			id;
 	int			ret;
 
@@ -45,23 +53,17 @@ int		parse_format(t_input *input)
 		&& (id = get_id(input->format[input->index])) != -1)
 	{
 		flags.conversion_specifier = input->format[input->index];
-		if ((ret = (*table[id])(input, &flags)))
-		{
-			input->index++;
+		ret = (*get_table(id))(input, &flags);
+		input->index++;
+		if (ret != 0)
 			break ;
-		}
 		if (ret == -1)
 			flags.error = 1;
 		id = -1;
-		input->index++;
 	}
 	if (id == -1)
-	{
 		free(flags.output);
-		return (-1);
-	}
 	print(input, &flags);
-	return (0);
 }
 
 int		ft_printf(const char *format, ...)
