@@ -6,12 +6,12 @@
 #    By: pi <pi@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/12 09:44:30 by jtong             #+#    #+#              #
-#    Updated: 2021/01/16 01:01:34 by user42           ###   ########.fr        #
+#    Updated: 2021/01/19 11:52:08 by jtong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := libftprintf.a
-LIBDIR := libft/
+LIBDIR := libft
 LIB := ft
 LIBNAME := $(addprefix lib,$(addsuffix .a,$(LIB)))
 LIBFULL := $(addprefix $(LIBDIR)/,$(LIBNAME))
@@ -20,7 +20,7 @@ FILEDIR := srcs
 HEADERDIR := . $(LIBDIR)
 OBJ := $(addsuffix .o,$(FILENAMES))
 
-BONUSFILENAMES := ft_printf_bonus ft_va_char_bonus ft_va_hex_bonus ft_va_integer_bonus ft_va_percent_bonus ft_va_string_bonus ft_va_ull_bonus pf_print_bonus pf_utils_bonus ft_va_pointer_bonus pf_utils_extra_bonus
+BONUSFILENAMES := ft_printf_bonus ft_va_char_bonus ft_va_hex_bonus ft_va_integer_bonus ft_va_percent_bonus ft_va_string_bonus ft_va_ull_bonus ft_va_printed_bonus pf_print_bonus pf_utils_bonus ft_va_pointer_bonus pf_utils_extra_bonus
 BONUSFILEDIR := bonus
 BONUSHEADERDIR := bonus $(LIBDIR)
 BONUSOBJ := $(addsuffix .o,$(BONUSFILENAMES))
@@ -34,13 +34,13 @@ all: $(NAME)
 
 bonus: $(BONUSOBJ) $(LIBFULL)
 	cp $(LIBFULL) $(NAME)
-	ar rc $@ $(BONUSOBJ)
+	ar rc $(NAME) $(BONUSOBJ)
 	ranlib $(NAME)
 
 $(NAME): $(OBJ) $(LIBFULL)
-	cp $(LIBFULL) $(NAME)
+	cp $(LIBFULL) $@
 	ar rc $@ $(OBJ)
-	ranlib $(NAME)
+	ranlib $@
 
 %.o : %.c
 	$(CC) $(OFLAGS) -c $<

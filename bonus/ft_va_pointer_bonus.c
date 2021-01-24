@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_va_percent.c                                    :+:      :+:    :+:   */
+/*   ft_va_pointer_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtong <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/08 10:41:03 by jtong             #+#    #+#             */
-/*   Updated: 2021/01/08 10:41:20 by jtong            ###   ########.fr       */
+/*   Created: 2021/01/08 10:41:04 by jtong             #+#    #+#             */
+/*   Updated: 2021/01/19 11:45:41 by jtong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
-int		ft_va_percent(t_input *input, t_flags *flags)
+int		ft_va_pointer(t_input *input, t_flags *flags)
 {
-	(void)input;
-	flags->field_width = 0;
-	flags->output = ft_strdup("%");
+	void	*ptr;
+
+	flags->base = 16;
+	ptr = va_arg(input->ap, typeof(ptr));
+	if (ptr == NULL)
+	{
+		flags->output = ft_strdup("(nil)");
+		flags->precision = -1;
+	}
+	else
+	{
+		flags->prefix[1] = 'x';
+		flags->output = ft_ulltoa_base((unsigned long long)ptr, flags->base);
+	}
 	return (1);
 }

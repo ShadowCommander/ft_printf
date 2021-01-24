@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_va_char.c                                       :+:      :+:    :+:   */
+/*   ft_va_hex_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtong <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/08 10:40:45 by jtong             #+#    #+#             */
-/*   Updated: 2021/01/08 10:40:46 by jtong            ###   ########.fr       */
+/*   Created: 2021/01/08 10:40:58 by jtong             #+#    #+#             */
+/*   Updated: 2021/01/19 11:45:33 by jtong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
-int		ft_va_char(t_input *input, t_flags *flags)
+int		ft_va_hex(t_input *input, t_flags *flags)
 {
-	char	c;
-
-	(void)flags;
-	c = va_arg(input->ap, int);
-	flags->output = ft_strsub(&c, 0, 1);
+	flags->base = 16;
+	ft_va_ull(input, flags);
+	if (flags->alternate && flags->umax != 0)
+		flags->prefix[1] = flags->conversion_specifier;
 	return (1);
 }

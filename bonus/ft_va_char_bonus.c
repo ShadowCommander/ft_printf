@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_va_string.c                                     :+:      :+:    :+:   */
+/*   ft_va_char_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtong <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/29 00:54:15 by jtong             #+#    #+#             */
-/*   Updated: 2021/01/19 13:06:24 by jtong            ###   ########.fr       */
+/*   Created: 2021/01/08 10:40:45 by jtong             #+#    #+#             */
+/*   Updated: 2021/01/19 11:45:30 by jtong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include "libft.h"
+#include "ft_printf_bonus.h"
 
-int		ft_va_string(t_input *input, t_flags *flags)
+int		ft_va_char(t_input *input, t_flags *flags)
 {
-	char	*str;
+	char	c;
 
-	str = va_arg(input->ap, typeof(str));
-	if (str == NULL)
-	{
-		flags->output = NULL;
-		return (1);
-	}
-	if (flags->precision == -1)
-		flags->output = ft_strdup(str);
-	else
-		flags->output = ft_strsub(str, 0, flags->precision);
-	flags->precision = 0;
-	flags->sign = '\0';
+	(void)flags;
+	c = va_arg(input->ap, int);
+	flags->output = ft_strsub(&c, 0, 1);
 	return (1);
 }

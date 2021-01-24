@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_va_string.c                                     :+:      :+:    :+:   */
+/*   ft_lltoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtong <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/29 00:54:15 by jtong             #+#    #+#             */
-/*   Updated: 2021/01/08 10:41:18 by jtong            ###   ########.fr       */
+/*   Created: 2018/10/30 22:36:57 by jtong             #+#    #+#             */
+/*   Updated: 2021/01/19 13:00:06 by jtong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
+#include <stdlib.h>
 
-int		ft_va_string(t_input *input, t_flags *flags)
+char	*ft_lltoa(long long n)
 {
-	char	*str;
+	long long	cpy;
+	int			size;
+	char		*str;
 
-	str = va_arg(input->ap, typeof(str));
-	if (str == NULL)
+	cpy = n;
+	size = cpy ? 0 : 1;
+	while (cpy != 0)
 	{
-		flags->output = NULL;
-		return (1);
+		cpy /= 10;
+		size++;
 	}
-	if (flags->precision == -1)
-		flags->output = ft_strdup(str);
-	else
-		flags->output = ft_strsub(str, 0, flags->precision);
-	flags->precision = 0;
-	return (1);
+	if (!(str = (char *)malloc(sizeof(*str) * (size + 1))))
+		return (NULL);
+	str[size] = '\0';
+	while (size-- > 0)
+	{
+		str[size] = ((n < 0 ? -1 : 1) * (n % 10)) + '0';
+		n /= 10;
+	}
+	return (str);
 }

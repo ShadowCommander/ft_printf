@@ -6,7 +6,7 @@
 /*   By: pi <pi@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/27 16:28:56 by jtong             #+#    #+#             */
-/*   Updated: 2020/12/10 21:28:48 by pi               ###   ########.fr       */
+/*   Updated: 2021/01/19 12:56:40 by jtong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,5 @@ int		ft_isupper(int c);
 int		ft_islower(int c);
 char	*ft_ulltoa_base(unsigned long long n, int base);
 char	*ft_strndup(const char *src, size_t len);
+char	*ft_lltoa(long long n);
 #endif

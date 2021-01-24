@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtong <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 00:55:03 by jtong             #+#    #+#             */
-/*   Updated: 2021/01/08 10:56:38 by jtong            ###   ########.fr       */
+/*   Updated: 2021/01/19 11:49:52 by jtong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int				ft_va_integer(t_input *input, t_flags *flags);
 int				ft_va_hex(t_input *input, t_flags *flags);
 int				ft_va_pointer(t_input *input, t_flags *flags);
 int				ft_va_percent(t_input *input, t_flags *flags);
+int				ft_va_printed(t_input *input, t_flags *flags);
 int				pf_left_adjust(t_input *input, t_flags *flags);
 int				pf_zero_pad(t_input *input, t_flags *flags);
 int				pf_field_width(t_input *input, t_flags *flags);
@@ -67,4 +68,8 @@ void			get_size(t_input *input, t_flags *flags);
 void			pad(t_input *input, int len, char c);
 void			print(t_input *input, t_flags *flags);
 int				pf_space(t_input *input, t_flags *flags);
+int				pf_long(t_input *input, t_flags *flags);
+int				pf_char(t_input *input, t_flags *flags);
+int				pf_alternate(t_input *input, t_flags *flags);
+int				pf_plus(t_input *input, t_flags *flags);
 #endif

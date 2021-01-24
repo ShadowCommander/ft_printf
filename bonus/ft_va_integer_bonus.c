@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_va_integer.c                                    :+:      :+:    :+:   */
+/*   ft_va_integer_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtong <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 10:41:01 by jtong             #+#    #+#             */
-/*   Updated: 2021/01/08 10:41:21 by jtong            ###   ########.fr       */
+/*   Updated: 2021/01/19 13:13:20 by jtong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 int		ft_va_integer(t_input *input, t_flags *flags)
 {
-	int		num;
-
 	flags->base = 10;
-	num = va_arg(input->ap, typeof(num));
-	flags->umax = num;
-	if (num < 0)
+	if (flags->length_modifier == 8 || flags->conversion_specifier == 'p')
+		flags->umax = va_arg(input->ap, long long);
+	else if (flags->length_modifier == 4)
+		flags->umax = va_arg(input->ap, long);
+	else if (flags->length_modifier == 2)
+		flags->umax = (short)va_arg(input->ap, int);
+	else if (flags->length_modifier == 1)
+		flags->umax = (char)va_arg(input->ap, int);
+	else
+		flags->umax = va_arg(input->ap, int);
+	if ((long long)flags->umax < 0)
 	{
 		flags->sign = '-';
-		num = -num;
+		flags->umax = -flags->umax;
 	}
-	flags->output = ft_itoa(num);
+	flags->output = ft_lltoa(flags->umax);
 	return (1);
 }
