@@ -6,7 +6,7 @@
 /*   By: jtong <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 10:41:01 by jtong             #+#    #+#             */
-/*   Updated: 2021/01/19 13:13:20 by jtong            ###   ########.fr       */
+/*   Updated: 2021/01/24 12:53:49 by jtong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ int		ft_va_integer(t_input *input, t_flags *flags)
 		flags->sign = '-';
 		flags->umax = -flags->umax;
 	}
-	flags->output = ft_lltoa(flags->umax);
+	flags->output = ft_ulltoa_base(flags->umax, flags->base);
 	return (1);
 }
