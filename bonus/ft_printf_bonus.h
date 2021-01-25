@@ -6,12 +6,12 @@
 /*   By: jtong <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 00:55:03 by jtong             #+#    #+#             */
-/*   Updated: 2021/01/19 11:49:52 by jtong            ###   ########.fr       */
+/*   Updated: 2021/01/25 02:33:30 by jtong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef FT_PRINTF_BONUS_H
+# define FT_PRINTF_BONUS_H
 
 # include <stdlib.h>
 # include <stdarg.h>
