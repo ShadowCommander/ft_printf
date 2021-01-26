@@ -6,7 +6,7 @@
 /*   By: jtong <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 10:41:04 by jtong             #+#    #+#             */
-/*   Updated: 2021/01/08 10:41:19 by jtong            ###   ########.fr       */
+/*   Updated: 2021/01/26 22:25:04 by jtong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		ft_va_pointer(t_input *input, t_flags *flags)
 	ptr = va_arg(input->ap, typeof(ptr));
 	if (ptr == NULL)
 	{
-		flags->output = ft_strdup("(nil)");
+		flags->output = ft_strdup("0x0");
 		flags->precision = -1;
 	}
 	else
